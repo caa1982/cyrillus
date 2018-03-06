@@ -4,8 +4,6 @@
   <title>Cyril Alvarez Adriaansen</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
-  <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
   <!-- Font Awesome -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <!-- Bootstrap core CSS -->
@@ -16,16 +14,15 @@
   <link rel="shortcut icon" href="./assets/token.jpg" type="image/x-icon">
 </head>
 <body>
- <div id="app">
-    <v-container fill-height grid-list-md>
-        <v-layout class="justify-center" row wrap align-center>  
-          <v-flex xs7>  
+ <div id="app" class="container">
+   <div class="row justify-content-center">
+    <div class="col-8">
             <!--Card Regular-->
             <div class="card animated slideInDown">
                 <!--Card image-->
                 <div class="img-wrapper animated slideInUp">
                     <img src="./assets/Cyril.png" class="cyril img-fluid" alt=""> 
-                    <img src="./assets/cyrilBody.png" class="cyrilBody img-fluid elevation-5" alt=""> 
+                    <img src="./assets/cyrilBody.png" class="cyrilBody img-fluid z-depth-3" alt=""> 
                 </div>
                 <!--/.Card image-->
 
@@ -40,32 +37,30 @@
                         as a Sales/Execution Trader Cyril has covered major european institutional investors in London and Geneva. 
                         He also possesses a solid foundation in programming languages.
                     </p>
-
-                    <a type="button" id="linkedin" v-on:mouseover="bounce($event)" class="icon btn-floating btn-lg btn-li elevation-10" :href="url[0]" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a>
-                    <a type="button" id="twitter" v-on:mouseover="bounce($event)" class="icon btn-floating btn-lg btn-li elevation-10" :href="url[1]" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
-                    <a type="button" id="codepen" v-on:mouseover="bounce($event)" class="icon btn-floating btn-lg btn-li elevation-10" :href="url[2]" target="_blank"><i class="fa fa-codepen fa-2x"></i></a>
-                    <a type="button" id="github" v-on:mouseover="bounce($event)" class="icon btn-floating btn-lg btn-li elevation-10" :href="url[3]" target="_blank"><i class="fa fa-github fa-2x"></i></a>
+                    
+                    <a id="linkedin" v-on:mouseover="bounce($event)" class="icon z-depth-3" :href="url[0]" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a>
+                    <a id="twitter" v-on:mouseover="bounce($event)" class="icon z-depth-3" :href="url[1]" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
+                    <a id="codepen" v-on:mouseover="bounce($event)" class="icon z-depth-3" :href="url[2]" target="_blank"><i class="fa fa-codepen fa-2x"></i></a>
+                    <a id="github" v-on:mouseover="bounce($event)" class="icon z-depth-3" :href="url[3]" target="_blank"><i class="fa fa-github fa-2x"></i></a>
 
                 </div>
                 <!--/.Card content-->
             </div>
             <!--/.Card Regular-->
-          </v-flex>
-        </v-layout>
-    </v-container>
-    <v-footer height="auto">
-      <v-layout row wrap justify-center>
-          <v-flex xs12 py-5 text-xs-center>
-            <a :href="url[4]" target="_blank"><img class="twoGether" src="./assets/2gether.png"></a>
-            <img id="token" :v-bind="animateImg('token')" src="./assets/token.jpg">
-          </v-flex>
-      </v-layout>
-    </v-footer>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-copyright py-3 text-center">
+          <div class="container-fluid text-white">
+              <a :href="url[4]" target="_blank"><img class="twoGether" src="./assets/2gether.png"></a>
+              <img id="token" class="z-depth-3" :v-bind="animateImg('token')" src="./assets/token.jpg">
+          </div>
+      </div>
+    </footer>
   </v-app>
  </div>
- <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
- <script src="https://unpkg.com/vuetify/dist/vuetify.min.js"></script>
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
  <script>
   
    new Vue({
@@ -79,7 +74,7 @@
               "https://github.com/caa1982",
               "https://www.2gether.global/"
              ],
-        animations: ["bounce", "flip", "rubberBand", "wobble"]
+        animations: ["bounce", "rubberBand", "wobble"]
       }
     },
     created() {
@@ -178,6 +173,11 @@
    a {
      z-index: +1;
      margin: 2px;
+   }
+   .icon {
+    display: inline-block;
+    border-radius: 60px;
+    padding: 0.5em 0.6em;
    }
    .icon:hover{
     background-color: white;
