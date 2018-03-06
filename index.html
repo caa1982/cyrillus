@@ -74,7 +74,7 @@
               "https://github.com/caa1982",
               "https://www.2gether.global/"
              ],
-        animations: ["bounce", "rubberBand", "wobble"]
+        animations: ["bounce", "rubberBand", "wobble", "pulse", "shake"]
       }
     },
     created() {
@@ -130,7 +130,11 @@
  </script>
  <style>
    body {
-     background: #151515;
+    background: linear-gradient(to bottom, #666666, black);
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
    }
    .card-text {
     text-align: justify;
@@ -180,8 +184,7 @@
     padding: 0.5em 0.6em;
    }
    .icon:hover{
-    background-color: white;
-    color: black;
+    background: linear-gradient(to right, #2a4b95, #79bf84);
    }
    #linkedin {
     background-color: #4875B4;
