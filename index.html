@@ -18,9 +18,9 @@
    <div class="row justify-content-center">
     <div class="col-8">
             
-            <div class="card animated slideInDown">
+            <div class="card">
                 
-                <div class="img-wrapper animated slideInUp">
+                <div class="img-wrapper animated slideInDown">
                     <img src="./assets/Cyril.png" class="cyril img-fluid" alt=""> 
                     <img src="./assets/cyrilBody.png" class="cyrilBody img-fluid z-depth-3" alt=""> 
                 </div>
@@ -83,7 +83,6 @@
 
       const self = this;
       let index = 0;
-      
       setInterval(function () {
         self.animateHead();
         $(".cyrilBody").css({background: color[index]});
