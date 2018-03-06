@@ -17,18 +17,18 @@
  <div id="app" class="container">
    <div class="row justify-content-center">
     <div class="col-8">
-            <!--Card Regular-->
+            
             <div class="card animated slideInDown">
-                <!--Card image-->
+                
                 <div class="img-wrapper animated slideInUp">
                     <img src="./assets/Cyril.png" class="cyril img-fluid" alt=""> 
                     <img src="./assets/cyrilBody.png" class="cyrilBody img-fluid z-depth-3" alt=""> 
                 </div>
-                <!--/.Card image-->
-
-                <!--Card content-->
+               
                 <div class="card-body text-center">
-                    <!--Title-->
+
+                  <div class="gradient">
+                    
                     <h4 class="card-title"><strong>Cyril Alvarez Adriaansen</strong></h4>
                     <h5>BlockChain Developer</h5>
 
@@ -37,16 +37,16 @@
                         as a Sales/Execution Trader Cyril has covered major european institutional investors in London and Geneva. 
                         He also possesses a solid foundation in programming languages.
                     </p>
-                    
+                  </div> 
                     <a id="linkedin" v-on:mouseover="bounce($event)" class="icon z-depth-3" :href="url[0]" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a>
                     <a id="twitter" v-on:mouseover="bounce($event)" class="icon z-depth-3" :href="url[1]" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
                     <a id="codepen" v-on:mouseover="bounce($event)" class="icon z-depth-3" :href="url[2]" target="_blank"><i class="fa fa-codepen fa-2x"></i></a>
                     <a id="github" v-on:mouseover="bounce($event)" class="icon z-depth-3" :href="url[3]" target="_blank"><i class="fa fa-github fa-2x"></i></a>
 
                 </div>
-                <!--/.Card content-->
+               
             </div>
-            <!--/.Card Regular-->
+            
       </div>
     </div>
     <footer>
@@ -135,6 +135,12 @@
     margin: 0;
     background-repeat: no-repeat;
     background-attachment: fixed;
+   }
+   .gradient {
+    background: -webkit-linear-gradient(#2a4b95, #79bf84);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1vh;
    }
    .card-text {
     text-align: justify;
