@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cyril Alvarez Adriaansen</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/token.jpg" type="image/x-icon">
+</head>
+<body>
+ <div id="app">
+    <v-container fill-height grid-list-md>
+        <v-layout class="justify-center" row wrap align-center>  
+          <v-flex xs7>  
+            <!--Card Regular-->
+            <div class="card card-cascade animated slideInDown">
+                <!--Card image-->
+                <div class="img-wrapper animated slideInUp">
+                    <img src="./assets/Cyril.png" class="cyril img-fluid" alt=""> 
+                    <img src="./assets/cyrilBody.png" class="cyrilBody img-fluid elevation-5" alt=""> 
+                </div>
+                <!--/.Card image-->
+
+                <!--Card content-->
+                <div class="card-body text-center">
+                    <!--Title-->
+                    <h4 class="card-title"><strong>Cyril Alvarez Adriaansen</strong></h4>
+                    <h5>BlockChain Developer</h5>
+
+                    <p class="card-text">
+                        Cyril has over 7 years experience in the Financial Industry working for hedge funds, private banks and brokerage firms, 
+                        as a Sales/Execution Trader Cyril has covered major european institutional investors in London and Geneva. 
+                        He also possesses a solid foundation in programming languages.
+                    </p>
+
+                    <a type="button" id="linkedin" v-on:mouseover="bounce($event)" class="icon btn-floating btn-lg btn-li elevation-10" :href="url[0]" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a>
+                    <a type="button" id="twitter" v-on:mouseover="bounce($event)" class="icon btn-floating btn-lg btn-li elevation-10" :href="url[1]" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
+                    <a type="button" id="codepen" v-on:mouseover="bounce($event)" class="icon btn-floating btn-lg btn-li elevation-10" :href="url[2]" target="_blank"><i class="fa fa-codepen fa-2x"></i></a>
+                    <a type="button" id="github" v-on:mouseover="bounce($event)" class="icon btn-floating btn-lg btn-li elevation-10" :href="url[3]" target="_blank"><i class="fa fa-github fa-2x"></i></a>
+
+                </div>
+                <!--/.Card content-->
+            </div>
+            <!--/.Card Regular-->
+          </v-flex>
+        </v-layout>
+    </v-container>
+    <v-footer height="auto">
+      <v-layout row wrap justify-center>
+          <v-flex xs12 py-5 text-xs-center>
+            <a :href="url[4]" target="_blank"><img class="twoGether" src="./assets/2gether.png"></a>
+            <img id="token" :v-bind="animateImg('token')" src="./assets/token.jpg">
+          </v-flex>
+      </v-layout>
+    </v-footer>
+  </v-app>
+ </div>
+ <script src="https://unpkg.com/vue/dist/vue.js"></script>
+ <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+ <!-- JQuery -->
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <!-- Bootstrap tooltips -->
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+ <!-- Bootstrap core JavaScript -->
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+ <!-- MDB core JavaScript -->
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.min.js"></script>
+ <!-- MDB core JqueryUI -->
+ <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+ <script>
+  
+   new Vue({
+    el: '#app',
+    data () {
+      return {
+        title: 'Cyril Alvarez Adriaansen',
+        url: ["https://www.linkedin.com/in/cyril-al-adriaansen/",
+              "https://twitter.com/888Cyril",
+              "https://codepen.io/caa/", 
+              "https://github.com/caa1982",
+              "https://www.2gether.global/"
+             ],
+        animations: ["bounce", "flip", "rubberBand", "wobble"]
+      }
+    },
+    created() {
+      const color = ["linear-gradient(to right, #2a4b95, #79bf84)", "linear-gradient(to left, #2a4b95, #79bf84)",
+                      "linear-gradient(to bottom, #2a4b95, #79bf84)", ];
+
+      const self = this;
+      let index = 0;
+      
+      setInterval(function () {
+        self.animateHead();
+        $(".cyrilBody").css({background: color[index]});
+        index === 2 ? index = 0 : index++;
+      }, 2000)
+    },
+    methods: {
+      randomEl(arr) {
+          return arr[Math.floor(Math.random() * arr.length)];
+      },
+      animateHead() {
+        const animation = this.randomEl(this.animations);
+        $(".cyril").addClass('animated ' + animation).delay(1000).queue(function() {
+          $(this).removeClass('animated ' + animation);
+          $(this).dequeue();
+        });
+      },
+      bounce(event) {
+        const targetId = event.currentTarget.id;
+        const animation = this.randomEl(this.animations);
+        $('#'+targetId).addClass('animated ' + animation).delay(2000).queue(function() {
+          $(this).removeClass('animated ' + animation);
+          $(this).dequeue();
+        });
+      },
+      animateTopLeftCss() {
+        const h = $("#app").height() - 50;
+        const w = $("#app").width() - 50;
+        const top = Math.floor(Math.random() * h);
+        const left = Math.floor(Math.random() * w);
+
+        return [top, left];
+      },
+      animateImg(id) {
+        const self = this;
+        setInterval(function () {
+            const positions = self.animateTopLeftCss();
+            $("#"+id).css({position: 'absolute'});
+            $("#"+id).animate({ top: positions[0], left: positions[1] }, false);
+        }, 1000);
+      }
+    }
+  })
+ </script>
+ <style>
+   body {
+     background: #151515;
+   }
+   .card-text {
+    text-align: justify;
+    text-justify: inter-word;
+   }
+   .img-wrapper {
+    position:relative;
+    display:inline-block;
+  }
+   .img-wrapper img {
+    height:auto;
+  }
+   .img-wrapper img + img {
+    height:auto;
+    position:absolute;
+    bottom:0;
+  }
+  .cyrilBody{
+    z-index: -1;
+    background: linear-gradient(to right, #2a4b95, #79bf84);
+  }
+   .cyril{ 
+    border: none;
+    background: transparent;
+   }
+   .twoGether {
+    height: 10vh;
+   }
+   #eth{
+     height: 7.5vh;
+   }
+   #token{
+    height: 8vh;
+	  -moz-border-radius: 50px;
+	  -webkit-border-radius: 50px;
+	  border-radius: 50px;
+   }
+   a {
+     z-index: +1;
+     margin: 2px;
+   }
+   .icon:hover{
+    background-color: white;
+    color: black;
+   }
+   #linkedin {
+    background-color: #4875B4;
+    color: white;
+   }
+   #twitter{
+    background-color: #00aced;
+    color: white;
+   }
+   #codepen{
+    background-color: black;
+    color: white;
+   }
+   #github{
+    background-color: #1a1a1a;
+    color: white;
+   }
+ </style>
+</body>
+</html>
