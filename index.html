@@ -17,21 +17,15 @@
  <div id="app" class="container">
    <div class="row justify-content-center">
     <div class="col-8">
-            
             <div class="card animated slideInDown">
-                
                 <div class="img-wrapper animated slideInUp">
-                    <img src="./assets/Cyril.png" class="cyril img-fluid" alt=""> 
+                    <img src="./assets/cyrilHead.png" class="cyrilHead img-fluid" alt=""> 
                     <img src="./assets/cyrilBody.png" class="cyrilBody img-fluid z-depth-3" alt=""> 
                 </div>
-               
                 <div class="card-body text-center">
-
                   <div class="gradient">
-                    
                     <h4 class="card-title"><strong>Cyril Alvarez Adriaansen</strong></h4>
                     <h5>BlockChain Developer</h5>
-
                     <p class="card-text">
                         Cyril has over 7 years experience in the Financial Industry working for hedge funds, private banks and brokerage firms, 
                         as a Sales/Execution Trader Cyril has covered major european institutional investors in London and Geneva. 
@@ -42,11 +36,8 @@
                     <a id="twitter" v-on:mouseover="bounce($event)" class="icon z-depth-3" :href="url[1]" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
                     <a id="codepen" v-on:mouseover="bounce($event)" class="icon z-depth-3" :href="url[2]" target="_blank"><i class="fa fa-codepen fa-2x"></i></a>
                     <a id="github" v-on:mouseover="bounce($event)" class="icon z-depth-3" :href="url[3]" target="_blank"><i class="fa fa-github fa-2x"></i></a>
-
                 </div>
-               
             </div>
-            
       </div>
     </div>
     <footer>
@@ -59,52 +50,51 @@
     </footer>
   </v-app>
  </div>
+ <!-- Vue -->
  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
+ <!-- Jquery -->
  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
  <script>
-  
    new Vue({
     el: '#app',
-    data () {
-      return {
-        title: 'Cyril Alvarez Adriaansen',
-        url: ["https://www.linkedin.com/in/cyril-al-adriaansen/",
-              "https://twitter.com/888Cyril",
-              "https://codepen.io/caa/", 
-              "https://github.com/caa1982",
-              "https://www.2gether.global/"
-             ],
-        animations: ["bounce", "rubberBand", "wobble", "pulse", "shake"]
-      }
-    },
-    created() {
-      const color = ["linear-gradient(to right, #2a4b95, #79bf84)", "linear-gradient(to left, #2a4b95, #79bf84)",
-                      "linear-gradient(to bottom, #2a4b95, #79bf84)", ];
-
-      const self = this;
-      let index = 0;
-      
-      setInterval(function () {
-        self.animateHead();
-        $(".cyrilBody").css({background: color[index]});
-        index === 2 ? index = 0 : index++;
+    data: () => ({
+      title: 'Cyril Alvarez Adriaansen',
+      index: 0,
+      url: ["https://www.linkedin.com/in/cyril-al-adriaansen/",
+            "https://twitter.com/888Cyril",
+            "https://codepen.io/caa/", 
+            "https://github.com/caa1982",
+            "https://www.2gether.global/"
+            ],
+      animations: ["bounce", "rubberBand", "wobble", "pulse", "shake"],
+      color: ["linear-gradient(to right, #2a4b95, #79bf84)", "linear-gradient(to left, #2a4b95, #79bf84)",
+              "linear-gradient(to bottom, #2a4b95, #79bf84)"]
+    }),
+    created() { 
+      setInterval(() => {
+        this.animateHead();
+        this.cardImageColor();
       }, 2000)
     },
     methods: {
-      randomEl(arr) {
-          return arr[Math.floor(Math.random() * arr.length)];
+      randomArr(arr) {
+        return arr[this.randomVal(arr.length)]
+      },
+      randomVal: (val) => Math.floor(Math.random() * val ),
+      cardImageColor() {
+        $(".cyrilBody").css({background: this.color[this.index]});
+        this.index === 2 ? this.index = 0 : this.index++;
       },
       animateHead() {
-        const animation = this.randomEl(this.animations);
-        $(".cyril").addClass('animated ' + animation).delay(1000).queue(function() {
+        const animation = this.randomArr(this.animations);
+        $(".cyrilHead").addClass('animated ' + animation).delay(1000).queue(function() {
           $(this).removeClass('animated ' + animation);
           $(this).dequeue();
         });
       },
       bounce(event) {
-        const targetId = event.currentTarget.id;
-        const animation = this.randomEl(this.animations);
-        $('#'+targetId).addClass('animated ' + animation).delay(2000).queue(function() {
+        const animation = this.randomArr(this.animations);
+        $('#'+event.currentTarget.id).addClass('animated ' + animation).delay(2000).queue(() => {
           $(this).removeClass('animated ' + animation);
           $(this).dequeue();
         });
@@ -112,15 +102,14 @@
       animateTopLeftCss() {
         const h = $("#app").height() - 50;
         const w = $("#app").width() - 50;
-        const top = Math.floor(Math.random() * h);
-        const left = Math.floor(Math.random() * w);
+        const top = this.randomVal(h);
+        const left = this.randomVal(w);
 
         return [top, left];
       },
       animateImg(id) {
-        const self = this;
-        setInterval(function () {
-            const positions = self.animateTopLeftCss();
+        setInterval(() => {
+            const positions = this.animateTopLeftCss();
             $("#"+id).css({position: 'absolute'});
             $("#"+id).animate({ top: positions[0], left: positions[1] }, false);
         }, 1000);
@@ -144,10 +133,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 1vh;
-   }
-   .card-text {
-    text-align: justify;
-    text-justify: inter-word;
    }
    .img-wrapper {
     position:relative;
