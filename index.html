@@ -29,14 +29,8 @@
               <h3 class="card-title"><strong>Cyril Alvarez Adriaansen</strong></h3>
               <h4>BlockChain Developer & Cryptocurrency Trader</h4>
             </div>
-            <a id="linkedin" class="icon z-depth-3" :href="url[0]" target="_blank"><i
-                class="fab fa-linkedin fa-3x"></i></a>
-            <a id="twitter" class="icon z-depth-3" :href="url[1]" target="_blank"><i
-                class="fab fa-twitter fa-3x"></i></a>
-            <a id="github" class="icon z-depth-3" :href="url[3]" target="_blank"><i
-                class="fab fa-github fa-3x"></i></a>
             <a id="resume" class="icon z-depth-3" href="./assets/Cyril_Alvarez-Resume.pdf" target="_blank"><i
-                class="far fa-file-pdf fa-3x"></i></a>
+              :v-bind="animateImg('pdf')"  class="fa fa-file-pdf fa-3x"></i></a>
           </div>
         </div>
       </div>
@@ -44,7 +38,12 @@
     <footer>
       <div class="footer-copyright py-3 text-center">
         <div class="container-fluid text-white">
-          <img id="btc" class="z-depth-3, token_shape" :v-bind="animateImg('btc')" src="./assets/btc.png">
+          <a id="linkedin"class="icon z-depth-3" :href="url[0]" target="_blank"><i
+            :v-bind="animateImg('linkedin')"  class="fab fa-linkedin fa-3x"></i></a>
+          <a id="twitter" class="icon z-depth-3" :href="url[1]" target="_blank"><i
+            :v-bind="animateImg('twitter')" class="fab fa-twitter fa-3x"></i></a>
+          <a id="github" class="icon z-depth-3" :href="url[3]" target="_blank"><i
+            :v-bind="animateImg('github')"  class="fab fa-github fa-3x"></i></a>
         </div>
     </footer>
     </v-app>
