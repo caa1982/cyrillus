@@ -1,201 +1,220 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Cyril Alvarez Adriaansen</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Font Awesome -->
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <!-- Bootstrap core CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
   <!-- Material Design Bootstrap -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
   <!-- Favicon -->
-  <link rel="shortcut icon" href="./assets/token.jpg" type="image/x-icon">
+  <link rel="shortcut icon" href="./assets/btc.png" type="image/x-icon">
 </head>
+
 <body>
- <div id="app" class="container">
-   <div class="row justify-content-center">
-    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-            <div class="card animated slideInDown">
-                <div class="img-wrapper animated slideInUp">
-                    <img src="./assets/cyrilHead.png" class="cyrilHead img-fluid" alt=""> 
-                    <img src="./assets/cyrilBody.png" class="cyrilBody img-fluid z-depth-3" alt=""> 
-                </div>
-                <div class="card-body text-center">
-                  <div class="gradient">
-                    <h4 class="card-title"><strong>Cyril Alvarez Adriaansen</strong></h4>
-                    <h5>BlockChain Developer</h5>
-                    <p class="card-text">
-                        I have over 7 years experience in the Financial Industry working for hedge funds, private banks and brokerage firms, 
-                        as a Sales/Execution Trader I have covered major european institutional investors in London and Geneva. 
-                        I also possesses a solid foundation in programming languages.
-                    </p>
-                  </div> 
-                    <a id="linkedin" v-on:mouseover="bounce($event)" class="icon z-depth-3" :href="url[0]" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a>
-                    <a id="twitter" v-on:mouseover="bounce($event)" class="icon z-depth-3" :href="url[1]" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
-                    <a id="codepen" v-on:mouseover="bounce($event)" class="icon z-depth-3" :href="url[2]" target="_blank"><i class="fa fa-codepen fa-2x"></i></a>
-                    <a id="github" v-on:mouseover="bounce($event)" class="icon z-depth-3" :href="url[3]" target="_blank"><i class="fa fa-github fa-2x"></i></a>
-                </div>
+  <div id="app" class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <div class="card animated slideInDown">
+          <div class="img-wrapper animated slideInUp">
+            <img src="./assets/cyrilHead.png" class="cyrilHead img-fluid" alt="">
+            <img src="./assets/cyrilBody.png" class="cyrilBody img-fluid z-depth-3" alt="">
+          </div>
+          <div class="card-body text-center">
+            <div class="gradient">
+              <h4 class="card-title"><strong>Cyril Alvarez Adriaansen</strong></h4>
+              <h5>BlockChain Developer & Cryptocurrency Trader</h5>
             </div>
+            <a id="linkedin" class="icon z-depth-3" :href="url[0]" target="_blank"><i
+                class="fa fa-linkedin fa-2x"></i></a>
+            <a id="twitter" class="icon z-depth-3" :href="url[1]" target="_blank"><i
+                class="fa fa-twitter fa-2x"></i></a>
+            <a id="codepen" class="icon z-depth-3" :href="url[2]" target="_blank"><i
+                class="fa fa-codepen fa-2x"></i></a>
+            <a id="github" class="icon z-depth-3" :href="url[3]" target="_blank"><i
+                class="fa fa-github fa-2x"></i></a>
+          </div>
+        </div>
       </div>
     </div>
     <footer>
       <div class="footer-copyright py-3 text-center">
-          <div class="container-fluid text-white">
-              <a :href="url[4]" target="_blank"><img class="twoGether" src="./assets/2gether.png"></a>
-              <img id="token" class="z-depth-3" :v-bind="animateImg('token')" src="./assets/token.jpg">
-          </div>
-      </div>
+        <div class="container-fluid text-white">
+          <img id="btc" class="z-depth-3, token_shape" :v-bind="animateImg('btc')" src="./assets/btc.png">
+        </div>
     </footer>
-  </v-app>
- </div>
- <!-- Vue -->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
- <!-- Jquery -->
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
- <script>
-   new Vue({
-    el: '#app',
-    data: () => ({
-      title: 'Cyril Alvarez Adriaansen',
-      index: 0,
-      url: ["https://www.linkedin.com/in/cyril-al-adriaansen/",
-            "https://twitter.com/888Cyril",
-            "https://codepen.io/caa/", 
-            "https://github.com/caa1982",
-            "https://www.2gether.global/"
-            ],
-      animations: ["bounce", "rubberBand", "wobble", "pulse", "shake"],
-      color: ["linear-gradient(to right, #2a4b95, #79bf84)", "linear-gradient(to left, #2a4b95, #79bf84)",
-              "linear-gradient(to bottom, #2a4b95, #79bf84)"]
-    }),
-    created() { 
-      setInterval(() => {
-        this.animateHead();
-        this.cardImageColor();
-      }, 2000)
-    },
-    methods: {
-      randomArr(arr) {
-        return arr[this.randomVal(arr.length)]
-      },
-      randomVal: (val) => Math.floor(Math.random() * val ),
-      cardImageColor() {
-        $(".cyrilBody").css({background: this.color[this.index]});
-        this.index === 2 ? this.index = 0 : this.index++;
-      },
-      animateHead() {
-        const animation = this.randomArr(this.animations);
-        $(".cyrilHead").addClass('animated ' + animation).delay(1000).queue(function() {
-          $(this).removeClass('animated ' + animation);
-          $(this).dequeue();
-        });
-      },
-      bounce(event) {
-        const animation = this.randomArr(this.animations);
-        $('#'+event.currentTarget.id).addClass('animated ' + animation).delay(2000).queue(() => {
-          $(this).removeClass('animated ' + animation);
-          $(this).dequeue();
-        });
-      },
-      animateTopLeftCss() {
-        const h = $("#app").height() - 50;
-        const w = $("#app").width() - 50;
-        const top = this.randomVal(h);
-        const left = this.randomVal(w);
-
-        return [top, left];
-      },
-      animateImg(id) {
+    </v-app>
+  </div>
+  <!-- Vue -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
+  <!-- Jquery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: () => ({
+        title: 'Cyril Alvarez Adriaansen',
+        index: 0,
+        url: ["https://www.linkedin.com/in/cyril-al-adriaansen/",
+          "https://twitter.com/888Cyril",
+          "https://codepen.io/caa/",
+          "https://github.com/caa1982"
+        ],
+        animations: ["bounce", "rubberBand", "wobble", "pulse", "shake"],
+        color: ["linear-gradient(to right, black, #FFA500)", "linear-gradient(to left, black, #FFA500)",
+          "linear-gradient(to bottom, black, #FFA500)"]
+      }),
+      created() {
         setInterval(() => {
+          this.animateHead();
+          this.cardImageColor();
+        }, 2000)
+      },
+      methods: {
+        randomArr(arr) {
+          return arr[this.randomVal(arr.length)]
+        },
+        randomVal: (val) => Math.floor(Math.random() * val),
+        cardImageColor() {
+          $(".cyrilBody").css({ background: this.color[this.index] });
+          this.index === 2 ? this.index = 0 : this.index++;
+        },
+        animateHead() {
+          const animation = this.randomArr(this.animations);
+          $(".cyrilHead").addClass('animated ' + animation).delay(1000).queue(function () {
+            $(this).removeClass('animated ' + animation);
+            $(this).dequeue();
+          });
+        },
+        bounce(event) {
+          const animation = this.randomArr(this.animations);
+          $('#' + event.currentTarget.id).addClass('animated ' + animation).delay(2000).queue(() => {
+            $(this).removeClass('animated ' + animation);
+            $(this).dequeue();
+          });
+        },
+        animateTopLeftCss() {
+          const h = $("#app").height() - 50;
+          const w = $("#app").width() - 50;
+          const top = this.randomVal(h);
+          const left = this.randomVal(w);
+
+          return [top, left];
+        },
+        animateImg(id) {
+          setInterval(() => {
             const positions = this.animateTopLeftCss();
-            $("#"+id).css({position: 'absolute'});
-            $("#"+id).animate({ top: positions[0], left: positions[1] }, false);
-        }, 1000);
+            $("#" + id).css({ position: 'absolute' });
+            $("#" + id).animate({ top: positions[0], left: positions[1] }, false);
+          }, 1000);
+        },
+        getfile() {
+          var inp = document.getElementById("assets/img");
+          for (i = 0; i < inp.files.length; i++) {
+            let file = inp.files[i];
+            console.log(file)
+          }
+        }
       }
+    })
+  </script>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #666666, black);
+      height: 100%;
+      margin: 0;
+      background-size: cover;
+      background-attachment: fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
     }
-  })
- </script>
- <style>
-   body {
-    background: linear-gradient(to bottom, #666666, black);
-    height: 100%;
-    margin: 0;
-    background-size: cover;
-    background-attachment: fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-   }
-   .gradient {
-    background: -webkit-linear-gradient(#2a4b95, #79bf84);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 1vh;
-   }
-   .img-wrapper {
-    position:relative;
-    display:inline-block;
-    float:left;
-  }
-   .img-wrapper img {
-    height:auto;
-    float:right;
-  }
-   .img-wrapper img + img {
-    height:auto;
-    position:absolute;
-    bottom:0;
-  }
-  .cyrilBody{
-    z-index: -1;
-    background: linear-gradient(to right, #2a4b95, #79bf84);
-  }
-   .cyril{ 
-    border: none;
-    background: transparent;
-   }
-   .twoGether {
-    height: 10vh;
-   }
-   #eth{
-     height: 7.5vh;
-   }
-   #token{
-    height: 8vh;
-	  -moz-border-radius: 50px;
-	  -webkit-border-radius: 50px;
-	  border-radius: 50px;
-   }
-   a {
-     z-index: +1;
-     margin: 2px;
-   }
-   .icon {
-    display: inline-block;
-    border-radius: 60px;
-    padding: 0.5em 0.6em;
-   }
-   .icon:hover{
-    background: linear-gradient(to right, #2a4b95, #79bf84);
-   }
-   #linkedin {
-    background-color: #4875B4;
-    color: white;
-   }
-   #twitter{
-    background-color: #00aced;
-    color: white;
-   }
-   #codepen{
-    background-color: black;
-    color: white;
-   }
-   #github{
-    background-color: #1a1a1a;
-    color: white;
-   }
- </style>
+
+    .gradient {
+      background: -webkit-linear-gradient(#2a4b95, #79bf84);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1vh;
+    }
+
+    .img-wrapper {
+      position: relative;
+      display: inline-block;
+      float: left;
+    }
+
+    .img-wrapper img {
+      height: auto;
+      float: right;
+    }
+
+    .img-wrapper img+img {
+      height: auto;
+      position: absolute;
+      bottom: 0;
+    }
+
+    .cyrilBody {
+      z-index: -1;
+      background: linear-gradient(to right, black, #FFA500);
+    }
+
+    .cyril {
+      border: none;
+      background: transparent;
+    }
+
+    .twoGether {
+      height: 10vh;
+    }
+
+    .token_shape {
+      height: 8vh;
+      -moz-border-radius: 50px;
+      -webkit-border-radius: 50px;
+      border-radius: 50px;
+    }
+
+    a {
+      z-index: +1;
+      margin: 2px;
+    }
+
+    .icon {
+      display: inline-block;
+      border-radius: 60px;
+      padding: 0.5em 0.6em;
+    }
+
+    .icon:hover {
+      background: linear-gradient(to right, #2a4b95, #79bf84);
+    }
+
+    #linkedin {
+      background-color: #4875B4;
+      color: white;
+    }
+
+    #twitter {
+      background-color: #00aced;
+      color: white;
+    }
+
+    #codepen {
+      background-color: black;
+      color: white;
+    }
+
+    #github {
+      background-color: #1a1a1a;
+      color: white;
+    }
+  </style>
 </body>
+
 </html>
