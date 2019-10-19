@@ -6,8 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Font Awesome -->
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
   <!-- Bootstrap core CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
   <!-- Material Design Bootstrap -->
@@ -31,13 +30,13 @@
               <h5>BlockChain Developer & Cryptocurrency Trader</h5>
             </div>
             <a id="linkedin" class="icon z-depth-3" :href="url[0]" target="_blank"><i
-                class="fa fa-linkedin fa-2x"></i></a>
+                class="fab fa-linkedin fa-3x"></i></a>
             <a id="twitter" class="icon z-depth-3" :href="url[1]" target="_blank"><i
-                class="fa fa-twitter fa-2x"></i></a>
-            <a id="codepen" class="icon z-depth-3" :href="url[2]" target="_blank"><i
-                class="fa fa-codepen fa-2x"></i></a>
+                class="fab fa-twitter fa-3x"></i></a>
             <a id="github" class="icon z-depth-3" :href="url[3]" target="_blank"><i
-                class="fa fa-github fa-2x"></i></a>
+                class="fab fa-github fa-3x"></i></a>
+            <a id="resume" class="icon z-depth-3" href="./assets/Cyril_Alvarez-Resume.pdf" target="_blank"><i
+                class="far fa-file-pdf fa-3x"></i></a>
           </div>
         </div>
       </div>
@@ -62,7 +61,6 @@
         index: 0,
         url: ["https://www.linkedin.com/in/cyril-al-adriaansen/",
           "https://twitter.com/888Cyril",
-          "https://codepen.io/caa/",
           "https://github.com/caa1982"
         ],
         animations: ["bounce", "rubberBand", "wobble", "pulse", "shake"],
@@ -187,12 +185,8 @@
 
     .icon {
       display: inline-block;
-      border-radius: 60px;
-      padding: 0.5em 0.6em;
-    }
-
-    .icon:hover {
-      background: linear-gradient(to right, #2a4b95, #79bf84);
+      border-radius: 70px;
+      padding: 0.6em 0.8em;
     }
 
     #linkedin {
