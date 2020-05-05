@@ -59,8 +59,7 @@
           "https://github.com/caa1982"
         ],
         animations: ["bounce", "rubberBand", "wobble", "pulse", "shake"],
-        color: ["linear-gradient(to bottom, black, #4169e1)", "linear-gradient(to left, black, #4169e1)", 
-        "linear-gradient(to top, black, #4169e1)", "linear-gradient(to right, black, #4169e1)"]
+        positions: ["bottom", "left", "top", "right"]
       }),
       created() {
         setInterval(() => (this.animateHead(), this.cardImageColor()), 2000)
@@ -68,7 +67,7 @@
       methods: {
         randomVal: val => Math.floor(Math.random() * val),
         cardImageColor() {
-          $(".cyrilBody").css({ background: this.color[this.index] });
+          $(".cyrilBody").css({ background: `linear-gradient(to ${position[this.index]}, black, #4169e1)` });
           this.index === 3 ? this.index = 0 : this.index++;
         },
         animateHead() {
