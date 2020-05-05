@@ -20,14 +20,14 @@
     <div class="row justify-content-center">
       <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
         <div class="card animated slideInDown">
-          <div class="img-wrapper animated slideInUp">
-            <img src="./assets/cyrilHead.png" class="cyrilHead img-fluid" alt="">
-            <img src="./assets/cyrilBody.png" class="cyrilBody img-fluid z-depth-3" alt="">
+          <div class="card-img-top animated slideInUp">
+            <img src="./assets/cyrilHead.png" class="cyrilHead img-fluid" alt="image1">
+            <img src="./assets/cyrilBody.png" class="cyrilBody img-fluid z-depth-3" alt="image2">
           </div>
           <div class="card-body text-center">
-            <h3 class="title card-title"><strong>Cyril Alvarez Adriaansen</strong></h3>
+            <h3 class="card-title"><strong>Cyril Alvarez Adriaansen</strong></h3>
             <h4 class="subtitle">BlockChain Developer & Cryptocurrency Trader</h4>
-            <a id="resume" class="s z-depth-2" href="./assets/Cyril_Alvarez-Resume.pdf" target="_blank"><i
+            <a class="card-link" href="./assets/Cyril_Alvarez-Resume.pdf" target="_blank"><i
               class="fa fa-file-pdf fa-3x"></i></a>
           </div>
         </div>
@@ -35,14 +35,13 @@
     </div>
     <footer>
       <div class="text-center">
-        <div class="container-fluid text-white">
-          <a id="linkedin"class="icon z-depth-3" :href="url[0]" target="_blank"><i
-            :v-bind="animateImg('linkedin')"  class="fab fa-linkedin fa-3x"></i></a>
-          <a id="twitter" class="icon z-depth-3" :href="url[1]" target="_blank"><i
-            :v-bind="animateImg('twitter')" class="fab fa-twitter fa-3x"></i></a>
-          <a id="github" class="icon z-depth-3" :href="url[3]" target="_blank"><i
-            :v-bind="animateImg('github')"  class="fab fa-github fa-3x"></i></a>
-        </div>
+        <a id="linkedin"class="icon linkedin" :href="url[0]" target="_blank"><i
+          :v-bind="animateImg('linkedin')"  class="fab fa-linkedin fa-3x"></i></a>
+        <a id="twitter" class="icon twitter" :href="url[1]" target="_blank"><i
+          :v-bind="animateImg('twitter')" class="fab fa-twitter fa-3x"></i></a>
+        <a id="github" class="icon github" :href="url[3]" target="_blank"><i
+          :v-bind="animateImg('github')"  class="fab fa-github fa-3x"></i></a>
+      </div>
     </footer>
     </v-app>
   </div>
@@ -64,10 +63,7 @@
           "linear-gradient(to bottom, black, #4169e1)"]
       }),
       created() {
-        setInterval(() => {
-          this.animateHead();
-          this.cardImageColor();
-        }, 2000)
+        setInterval(() => (this.animateHead(), this.cardImageColor()), 2000)
       },
       methods: {
         randomVal: val => Math.floor(Math.random() * val),
@@ -111,7 +107,7 @@
       -o-background-size: cover;
     }
 
-    .title {
+    .card-title {
       color: #79bf84;
     }
 
@@ -119,20 +115,12 @@
       color: #4169e1;
     }
 
-    .img-wrapper {
-      position: relative;
-      display: inline-block;
-    }
-
-    .img-wrapper img {
-      height: auto;
+    .card-img-top img {
       float: right;
     }
 
-    .img-wrapper img+img {
-      height: auto;
-      position: absolute;
-      bottom: 0;
+    .card-img-top img+img {
+      position: fixed;
     }
 
     .cyrilBody {
@@ -140,30 +128,24 @@
       background: linear-gradient(to right, black, #4169e1);
     }
 
-    a {
-      z-index: +1;
-      margin: 2px;
-    }
-
     .icon {
+      margin: 3px;
       display: inline-block;
       border-radius: 70px;
       padding: 0.6em 0.8em;
+      color: white !important;
     }
 
-    #linkedin {
+    .linkedin {
       background-color: #4875B4;
-      color: white;
     }
 
-    #twitter {
+    .twitter {
       background-color: #00aced;
-      color: white;
     }
 
-    #github {
+    .github {
       background-color: #1a1a1a;
-      color: white;
     }
   </style>
 </body>
