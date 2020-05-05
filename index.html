@@ -54,7 +54,6 @@
     new Vue({
       el: '#app',
       data: () => ({
-        title: 'Cyril Alvarez Adriaansen',
         index: 0,
         url: ["https://www.linkedin.com/in/cyril-al-adriaansen/",
           "https://twitter.com/888Cyril",
@@ -71,17 +70,15 @@
         }, 2000)
       },
       methods: {
-        randomArr(arr) {
-          return arr[this.randomVal(arr.length)]
-        },
-        randomVal: (val) => Math.floor(Math.random() * val),
+        randomVal: val => Math.floor(Math.random() * val),
         cardImageColor() {
           $(".cyrilBody").css({ background: this.color[this.index] });
           this.index === 2 ? this.index = 0 : this.index++;
         },
         animateHead() {
-          const animation = this.randomArr(this.animations);
-          $(".cyrilHead").addClass('animated ' + animation).delay(1000).queue(function () {
+          const animations = this.animations;
+          const animation = animations[this.randomVal(animations.length)];
+          $(".cyrilHead").addClass('animated ' + animation).delay(1000).queue(() => {
             $(this).removeClass('animated ' + animation);
             $(this).dequeue();
           });
@@ -92,13 +89,13 @@
           const top = this.randomVal(h);
           const left = this.randomVal(w);
 
-          return [top, left];
+          return {top, left};
         },
         animateImg(id) {
           setInterval(() => {
             const positions = this.animateTopLeftCss();
             $("#" + id).css({ position: 'absolute' });
-            $("#" + id).animate({ top: positions[0], left: positions[1] }, false);
+            $("#" + id).animate(positions, false);
           }, 1000);
         }
       }
