@@ -67,7 +67,7 @@
       methods: {
         randomVal: val => Math.floor(Math.random() * val),
         cardImageColor() {
-          $(".cyrilBody").css({ background: `linear-gradient(to ${position[this.index]}, black, #4169e1)` });
+          $(".cyrilBody").css({ background: `linear-gradient(to ${this.positions[this.index]}, black, #4169e1)` });
           this.index === 3 ? this.index = 0 : this.index++;
         },
         animateHead() {
