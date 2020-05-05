@@ -72,7 +72,7 @@
         },
         animateHead() {
           const animation = this.animations[this.randomVal(this.animations.length)];
-          $(".cyrilHead").addClass('animated ' + animation).delay(1000).queue(() => {
+          $(".cyrilHead").addClass('animated ' + animation).delay(1000).queue(function() {
             $(this).removeClass('animated ' + animation);
             $(this).dequeue();
           });
