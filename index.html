@@ -71,8 +71,7 @@
           this.index === 3 ? this.index = 0 : this.index++;
         },
         animateHead() {
-          const animations = this.animations;
-          const animation = animations[this.randomVal(animations.length)];
+          const animation = this.animations[this.randomVal(this.animations.length)];
           $(".cyrilHead").addClass('animated ' + animation).delay(1000).queue(() => {
             $(this).removeClass('animated ' + animation);
             $(this).dequeue();
