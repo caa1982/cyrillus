@@ -25,11 +25,9 @@
             <img src="./assets/cyrilBody.png" class="cyrilBody img-fluid z-depth-3" alt="">
           </div>
           <div class="card-body text-center">
-            <div class="gradient">
-              <h3 class="card-title"><strong>Cyril Alvarez Adriaansen</strong></h3>
-              <h4>BlockChain Developer & Cryptocurrency Trader</h4>
-            </div>
-            <a id="resume" class="z-depth-2" href="./assets/Cyril_Alvarez-Resume.pdf" target="_blank"><i
+            <h3 class="title card-title"><strong>Cyril Alvarez Adriaansen</strong></h3>
+            <h4 class="subtitle">BlockChain Developer & Cryptocurrency Trader</h4>
+            <a id="resume" class="s z-depth-2" href="./assets/Cyril_Alvarez-Resume.pdf" target="_blank"><i
               class="fa fa-file-pdf fa-3x"></i></a>
           </div>
         </div>
@@ -63,8 +61,8 @@
           "https://github.com/caa1982"
         ],
         animations: ["bounce", "rubberBand", "wobble", "pulse", "shake"],
-        color: ["linear-gradient(to right, black, #FFA500)", "linear-gradient(to left, black, #FFA500)",
-          "linear-gradient(to bottom, black, #FFA500)"]
+        color: ["linear-gradient(to right, black, #4169e1)", "linear-gradient(to left, black, #4169e1)",
+          "linear-gradient(to bottom, black, #4169e1)"]
       }),
       created() {
         setInterval(() => {
@@ -132,17 +130,17 @@
       -o-background-size: cover;
     }
 
-    .gradient {
-      background: -webkit-linear-gradient(#2a4b95, #79bf84);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1vh;
+    .title {
+      color: #79bf84;
+    }
+
+    .subtitle {
+      color: #4169e1;
     }
 
     .img-wrapper {
       position: relative;
       display: inline-block;
-      float: left;
     }
 
     .img-wrapper img {
@@ -158,23 +156,12 @@
 
     .cyrilBody {
       z-index: -1;
-      background: linear-gradient(to right, black, #FFA500);
+      background: linear-gradient(to right, black, #4169e1);
     }
 
     .cyril {
       border: none;
       background: transparent;
-    }
-
-    .twoGether {
-      height: 10vh;
-    }
-
-    .token_shape {
-      height: 8vh;
-      -moz-border-radius: 50px;
-      -webkit-border-radius: 50px;
-      border-radius: 50px;
     }
 
     a {
