@@ -100,13 +100,6 @@
             $("#" + id).css({ position: 'absolute' });
             $("#" + id).animate({ top: positions[0], left: positions[1] }, false);
           }, 1000);
-        },
-        getfile() {
-          var inp = document.getElementById("assets/img");
-          for (i = 0; i < inp.files.length; i++) {
-            let file = inp.files[i];
-            console.log(file)
-          }
         }
       }
     })
