@@ -86,13 +86,6 @@
             $(this).dequeue();
           });
         },
-        bounce(event) {
-          const animation = this.randomArr(this.animations);
-          $('#' + event.currentTarget.id).addClass('animated ' + animation).delay(2000).queue(() => {
-            $(this).removeClass('animated ' + animation);
-            $(this).dequeue();
-          });
-        },
         animateTopLeftCss() {
           const h = $("#app").height() - 50;
           const w = $("#app").width() - 50;
