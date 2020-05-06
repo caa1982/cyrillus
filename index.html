@@ -23,7 +23,7 @@
       <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
         <div class="card animated slideInDown">
           <div class="card-img-top animated slideInUp">
-            <img src="./assets/cyrilHead.png" class="cyrilHead img-fluid" alt="image1">
+            <img src="./assets/cyrilHead.png" id="head" v-on:click="shot('head')" class="cyrilHead img-fluid" alt="image1">
             <img src="./assets/cyrilBody.png" class="cyrilBody img-fluid z-depth-3" alt="image2">
           </div>
           <div class="card-body text-center">
@@ -60,7 +60,7 @@
               twitter: "https://twitter.com/888Cyril", 
               github: "https://github.com/caa1982", 
               cv: "https://cyril.page/assets/Cyril_Alvarez-Resume.pdf"},
-        animations: ["bounce", "rubberBand", "wobble", "pulse", "shake"],
+        animations: ["bounce", "rubberBand", "wobble", "pulse", "shake", "jello", "heartBeat", "tada", "swing"],
         positions: ["bottom", "left", "top", "right"]
       }),
       created() {
@@ -76,17 +76,23 @@
         shot(id) {
             const url = this.url[id]
             if(id === "cv"){
-              return $("#cv").addClass('animated hinge').delay(2300).queue(function() {
+               $("#cv").addClass('animated hinge').delay(2300).queue(function() {
                   $(this).removeClass('animated hinge');
                   $(this).addClass('animated infinite swing delay-2s');
                   $(this).dequeue();
                   window.open(url,'_blank')
               });
+            }else if(id === "head") {
+              $("#head").addClass('animated bounceOutLeft').delay(1200).queue(function() {
+                  $(this).removeClass('animated bounceOutLeft');
+                  $(this).addClass('animated bounceInRight');
+                  $(this).dequeue();
+              });
+            }else {
+              $("#"+id).toggle("explode", {pieces: 24}, 2000).queue(function(id) {
+                window.open(url,'_blank')
+              });
             }
-
-            $("#"+id).toggle("explode", {pieces: 24}, 2000).queue(function(id) {
-              window.open(url,'_blank')
-            });
           },
         cardImageColor() {
           $(".cyrilBody").css({ background: `linear-gradient(to ${this.positions[this.index]}, black, #4169e1)` });
