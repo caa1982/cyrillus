@@ -76,8 +76,9 @@
         shot(id) {
             const url = this.url[id]
             if(id === "cv"){
-              return $("#cv").addClass('animated hinge').delay(1500).queue(function() {
+              return $("#cv").addClass('animated hinge').delay(2300).queue(function() {
                   $(this).removeClass('animated hinge');
+                  $(this).addClass('animated infinite swing delay-2s');
                   $(this).dequeue();
                   window.open(url,'_blank')
               });
