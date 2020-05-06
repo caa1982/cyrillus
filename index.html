@@ -23,7 +23,7 @@
       <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
         <div class="card animated slideInDown">
           <div class="card-img-top animated slideInUp">
-            <img src="./assets/cyrilHead.png" class="cyrilHead img-fluid" alt="image1">
+            <img src="./assets/cyrilHead.png" id="head" v-on:click="shot('head')" class="cyrilHead img-fluid" alt="image1">
             <img src="./assets/cyrilBody.png" class="cyrilBody img-fluid z-depth-3" alt="image2">
           </div>
           <div class="card-body text-center">
@@ -82,6 +82,9 @@
                   $(this).dequeue();
                   window.open(url,'_blank')
               });
+            }else if(id === "head"){
+              $("#"+id).removeClass("img-fluid");
+              $("#"+id).toggle("explode", {pieces: 64}, 3000)
             }else {
               $("#"+id).toggle("explode", {pieces: 24}, 2000).queue(function(id) {
                 window.open(url,'_blank')
