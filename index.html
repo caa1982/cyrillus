@@ -84,7 +84,10 @@
               });
             }else if(id === "head"){
               $("#"+id).removeClass("img-fluid");
-              $("#"+id).toggle("explode", {pieces: 64}, 3000)
+              $("#"+id).toggle("explode", {pieces: 64}, 3000).queue(function(id) {
+                $(".cyrilHead").addClass("img-fluid");
+                $(".cyrilHead").toggle()
+              });
             }else {
               $("#"+id).toggle("explode", {pieces: 24}, 2000).queue(function(id) {
                 window.open(url,'_blank')
