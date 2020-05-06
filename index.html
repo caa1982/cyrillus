@@ -5,6 +5,8 @@
   <title>Cyril Alvarez Adriaansen</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Jquery CSS -->
+  <link rel="shortcut icon" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet">
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
   <!-- Bootstrap core CSS -->
@@ -12,11 +14,11 @@
   <!-- Material Design Bootstrap -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
   <!-- Favicon -->
-  <link rel="shortcut icon" href="./assets/cyrilHead.png" type="image/x-icon">
+  <link rel="shortcut icon" href="./assets/faviconHead.png" type="image/x-icon">
 </head>
 
 <body>
-  <div id="app" class="container">
+  <div id="app" v-on:click="sound()" class="container">
     <div class="row justify-content-center">
       <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
         <div class="card animated slideInDown">
@@ -35,37 +37,45 @@
     </div>
     <footer>
       <div class="text-center">
-        <a id="linkedin"class="icon linkedin" :href="url[0]" target="_blank"><i
+        <a id="linkedin"class="icon linkedin" v-on:click="shot('linkedin')" target="_blank"><i
           :v-bind="animateImg('linkedin')"  class="fab fa-linkedin fa-3x"></i></a>
-        <a id="twitter" class="icon twitter" :href="url[1]" target="_blank"><i
+        <a id="twitter" class="icon twitter" v-on:click="shot('twitter')" target="_blank"><i
           :v-bind="animateImg('twitter')" class="fab fa-twitter fa-3x"></i></a>
-        <a id="github" class="icon github" :href="url[3]" target="_blank"><i
+        <a id="github" class="icon github" v-on:click="shot('github')" target="_blank"><i
           :v-bind="animateImg('github')"  class="fab fa-github fa-3x"></i></a>
       </div>
     </footer>
-    </v-app>
   </div>
   <!-- Vue -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
   <!-- Jquery -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script>
     new Vue({
       el: '#app',
       data: () => ({
         index: 0,
-        url: ["https://www.linkedin.com/in/cyril-al-adriaansen/",
-          "https://twitter.com/888Cyril",
-          "https://github.com/caa1982"
-        ],
+        url: {linkedin: "https://www.linkedin.com/in/cyril-al-adriaansen/", twitter: "https://twitter.com/888Cyril", github: "https://github.com/caa1982"},
         animations: ["bounce", "rubberBand", "wobble", "pulse", "shake"],
         positions: ["bottom", "left", "top", "right"]
       }),
       created() {
-        setInterval(() => (this.animateHead(), this.cardImageColor()), 2000)
+        this.intervalId = setInterval(() => (this.animateHead(), this.cardImageColor()), 2000)
       },
       methods: {
         randomVal: val => Math.floor(Math.random() * val),
+        sound() {
+          var audio = document.createElement("audio");
+          audio.setAttribute("src", "./assets/magnum.mp3");
+          audio.play();
+        },
+        shot(id) {
+            const url = this.url[id]
+            $("#"+id).toggle("explode", {pieces: 24}, 2000).queue(function(id) {
+              window.open(url,'_blank')
+            });
+          },
         cardImageColor() {
           $(".cyrilBody").css({ background: `linear-gradient(to ${this.positions[this.index]}, black, #4169e1)` });
           this.index === 3 ? this.index = 0 : this.index++;
@@ -90,7 +100,7 @@
             const positions = this.animateTopLeftCss();
             $("#" + id).css({ position: 'absolute' });
             $("#" + id).animate(positions, false);
-          }, 1000);
+          }, 1300);
         }
       }
     })
@@ -103,6 +113,7 @@
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
+      cursor: url("./assets/cursorShot.png")50 50, auto;
     }
 
     .card-title {
@@ -113,17 +124,14 @@
       color: #4169e1;
     }
 
-    .card-img-top img {
+    .cyrilHead {
       float: right;
-    }
-
-    .card-img-top img+img {
-      position: fixed;
     }
 
     .cyrilBody {
       z-index: -1;
       background: linear-gradient(to right, black, #4169e1);
+      position: fixed;
     }
 
     .icon {
@@ -132,6 +140,7 @@
       border-radius: 70px;
       padding: 0.6em 0.8em;
       color: white !important;
+      cursor: url("./assets/cursorShot.png")50 50, auto;
     }
 
     .linkedin {
