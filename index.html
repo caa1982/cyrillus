@@ -29,8 +29,8 @@
           <div class="card-body text-center">
             <h3 class="card-title"><strong>Cyril Alvarez Adriaansen</strong></h3>
             <h4 class="subtitle">BlockChain Developer & Cryptocurrency Trader</h4>
-            <a class="card-link" href="./assets/Cyril_Alvarez-Resume.pdf" target="_blank"><i
-              class="fa fa-file-pdf fa-3x"></i></a>
+            <a class="card-link" target="_blank"><i id="cv"
+              v-on:click="shot('cv')" class="fa fa-file-pdf fa-3x animated infinite swing delay-2s"></i></a>
           </div>
         </div>
       </div>
@@ -56,7 +56,10 @@
       el: '#app',
       data: () => ({
         index: 0,
-        url: {linkedin: "https://www.linkedin.com/in/cyril-al-adriaansen/", twitter: "https://twitter.com/888Cyril", github: "https://github.com/caa1982"},
+        url: {linkedin: "https://www.linkedin.com/in/cyril-al-adriaansen/", 
+              twitter: "https://twitter.com/888Cyril", 
+              github: "https://github.com/caa1982", 
+              cv: "https://cyril.page/assets/Cyril_Alvarez-Resume.pdf"},
         animations: ["bounce", "rubberBand", "wobble", "pulse", "shake"],
         positions: ["bottom", "left", "top", "right"]
       }),
@@ -72,6 +75,14 @@
         },
         shot(id) {
             const url = this.url[id]
+            if(id === "cv"){
+              return $("#cv").addClass('animated hinge').delay(1500).queue(function() {
+                  $(this).removeClass('animated hinge');
+                  $(this).dequeue();
+                  window.open(url,'_blank')
+              });
+            }
+
             $("#"+id).toggle("explode", {pieces: 24}, 2000).queue(function(id) {
               window.open(url,'_blank')
             });
@@ -140,6 +151,10 @@
       border-radius: 70px;
       padding: 0.6em 0.8em;
       color: white !important;
+      cursor: url("./assets/cursorShot.png")50 50, auto;
+    }
+    
+    a{
       cursor: url("./assets/cursorShot.png")50 50, auto;
     }
 
