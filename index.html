@@ -30,20 +30,24 @@
             <h3 class="card-title"><strong>Cyril Alvarez Adriaansen</strong></h3>
             <h4 class="subtitle">BlockChain Developer & Cryptocurrency Trader</h4>
             <div class="card-link" v-on:click="shot('cv')">
-              <i id="cv" class="fa fa-file-pdf fa-3x animated infinite swing delay-2s"></i>
+              <i id="cv" class="fa fa-file-pdf fa-3x"></i>
             </div>
+          </div>
+          <div class="text-center">
+            <h4 class="subtitle">Game Mode</h4>
+            <label class="switch">
+              <input v-on:click="gameMode()" type="checkbox">
+              <span class="slider round"></span>
+            </label>
           </div>
         </div>
       </div>
     </div>
     <footer>
       <div class="text-center">
-        <a id="linkedin"class="icon linkedin" v-on:click="shot('linkedin')" target="_blank"><i
-          :v-bind="animateImg('linkedin')"  class="fab fa-linkedin fa-3x"></i></a>
-        <a id="twitter" class="icon twitter" v-on:click="shot('twitter')" target="_blank"><i
-          :v-bind="animateImg('twitter')" class="fab fa-twitter fa-3x"></i></a>
-        <a id="github" class="icon github" v-on:click="shot('github')" target="_blank"><i
-          :v-bind="animateImg('github')"  class="fab fa-github fa-3x"></i></a>
+        <div id="linkedin" class="icon linkedin" v-on:click="shot('linkedin')" target="_blank"><i class="fab fa-linkedin fa-3x"></i></div>
+        <div id="twitter" class="icon twitter" v-on:click="shot('twitter')" target="_blank"><i class="fab fa-twitter fa-3x"></i></div>
+        <div id="github" class="icon github" v-on:click="shot('github')" target="_blank"><i class="fab fa-github fa-3x"></i></div>
       </div>
     </footer>
   </div>
@@ -57,6 +61,7 @@
       el: '#app',
       data: () => ({
         index: 0,
+        intervalId: 0,
         url: {linkedin: "https://www.linkedin.com/in/cyril-al-adriaansen/", 
               twitter: "https://twitter.com/888Cyril", 
               github: "https://github.com/caa1982", 
@@ -64,34 +69,55 @@
         animations: ["bounce", "rubberBand", "wobble", "pulse", "shake", "jello", "heartBeat", "tada", "swing"],
         positions: ["bottom", "left", "top", "right"]
       }),
-      created() {
-        this.intervalId = setInterval(() => (this.animateHead(), this.cardImageColor()), 2000)
-      },
       methods: {
         randomVal: val => Math.floor(Math.random() * val),
+        gameMode() {
+          if(!this.intervalId){
+            this.intervalId = setInterval(() => {
+              this.animateHead();
+              this.cardImageColor();
+              this.animateImg(['linkedin', 'twitter', 'github']);
+            }, 2000)
+            setTimeout(() => {
+              this.animateHead();
+              this.cardImageColor();
+              this.animateImg(['linkedin', 'twitter', 'github']);
+              this.sounds = true;
+              $(".fa").addClass('animated infinite swing delay-2s');
+              $("i, body").css("cursor", "url('./assets/cursorShot.png')50 50, auto");
+            }, 100);
+          } else {
+            location.reload();
+          }
+        },
         sound() {
+          if(!this.sounds){
+            return;
+          }
           var audio = document.createElement("audio");
           audio.setAttribute("src", "./assets/magnum.mp3");
           audio.play();
         },
         shot(id) {
             const url = this.url[id]
-            if(id === "cv"){
+            if(id === "cv" && this.intervalId){
                $("#cv").addClass('animated hinge').delay(2300).queue(function() {
                   $(this).removeClass('animated hinge');
                   $(this).addClass('animated infinite swing delay-2s');
                   $(this).dequeue();
                   window.open(url,'_blank')
               });
-            }else if(id === "head"){
+            }else if(id === "head" && this.intervalId){
               $("#"+id).removeClass("img-fluid");
               $("#"+id).toggle("explode", {pieces: 64}, 3000).queue(function(id) {
                 $(".cyrilBody").css({ position: 'relative' });
               });
-            }else {
+            }else if(id != "head" && this.intervalId ) {
               $("#"+id).toggle("explode", {pieces: 24}, 2000).queue(function(id) {
                 window.open(url,'_blank')
               });
+            } else if (id != "head"){
+              window.open(url,'_blank')
             }
           },
         cardImageColor() {
@@ -113,12 +139,12 @@
 
           return {top, left};
         },
-        animateImg(id) {
-          setInterval(() => {
+        animateImg(ids) {
+          ids.forEach(id => {
             const positions = this.animateTopLeftCss();
             $("#" + id).css({ position: 'absolute' });
             $("#" + id).animate(positions, false);
-          }, 1300);
+          });
         }
       }
     })
@@ -131,7 +157,6 @@
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
-      cursor: url("./assets/cursorShot.png")50 50, auto;
     }
 
     .card-title {
@@ -152,19 +177,22 @@
       position: fixed;
     }
 
+    footer {
+      margin-top: 1vh
+    }
+
     .icon {
       margin: 3px;
       display: inline-block;
       border-radius: 70px;
       padding: 0.6em 0.8em;
       color: white !important;
-      cursor: url("./assets/cursorShot.png")50 50, auto;
     }
     
-    a{
-      cursor: url("./assets/cursorShot.png")50 50, auto;
+    .fa, .fab{
+      cursor: pointer;
     }
-
+    
     .linkedin {
       background-color: #4875B4;
     }
@@ -175,6 +203,68 @@
 
     .github {
       background-color: #1a1a1a;
+    }
+
+    /* Switch */
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+
+    .switch input { 
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: red;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    input:checked + .slider {
+      background-color: green;
+    }
+
+    input:focus + .slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+
+    .slider.round:before {
+      border-radius: 50%;
     }
   </style>
 </body>
