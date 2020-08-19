@@ -27,14 +27,15 @@
             <img src="./assets/cyrilBody.png" class="cyrilBody img-fluid z-depth-3" alt="image2">
           </div>
           <div class="card-body text-center">
-            <h3 class="card-title"><strong>Cyril Alvarez Adriaansen</strong></h3>
-            <h4 class="subtitle">BlockChain Developer & Cryptocurrency Trader</h4>
+            <h1 class="d-inline font-italic blueColor"><strong>Cyril </strong></h1>
+            <h2 class="greenColor d-inline">Alvarez Adriaansen</h2>
+            <h4>FinTech Specialist, Trader & Programmer</h4>
             <div class="card-link" v-on:click="shot('cv')">
               <i id="cv" class="fa fa-file-pdf fa-3x"></i>
             </div>
           </div>
           <div class="text-center">
-            <h4 class="subtitle">Game Mode</h4>
+            <h4 class="greenColor font-italic"><strong>Game Mode</strong></h4>
             <label class="switch">
               <input v-on:click="gameMode()" type="checkbox">
               <span class="slider round"></span>
@@ -159,12 +160,12 @@
       -o-background-size: cover;
     }
 
-    .card-title {
-      color: #79bf84;
+    .blueColor {
+      color: rgb(39, 35, 67);
     }
 
-    .subtitle {
-      color: #4169e1;
+    .greenColor {
+      color: #4dd599;
     }
 
     .cyrilHead {
